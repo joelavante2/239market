@@ -123,11 +123,11 @@ index.html
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-
 import {
   getFirestore,
   collection,
-  addDoc
+  addDoc,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -148,33 +148,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
 const container = document.getElementById("products");
 
-function displayProducts(){
-
-  container.innerHTML = "";
-
-  products.forEach(p => {
-
-    container.innerHTML += `
-
-      <div class="card">
-
-        <h3>${p.name}</h3>
-
-        <p>${p.price} RWF</p>
-
-        <button onclick="addToCart('${p.name}', ${p.price})">
-
-          Add to Cart
-
-        </button>
-
-      </div>
-
-    `;
-
-  });
-
-}
 async function displayProducts(){
 
   container.innerHTML = "";
