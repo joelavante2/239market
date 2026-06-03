@@ -152,8 +152,6 @@ async function displayProducts(){
 
   container.innerHTML = "";
 
-  async function displayProducts(){
-
   try {
 
     const querySnapshot = await getDocs(collection(db, "products"));
@@ -161,11 +159,27 @@ async function displayProducts(){
     alert("Products found: " + querySnapshot.size);
 
     querySnapshot.forEach((doc) => {
-      alert(JSON.stringify(doc.data()));
+
+      const p = doc.data();
+
+      alert(JSON.stringify(p));
+
+      container.innerHTML += `
+        <div class="card">
+          <h3>${p.name}</h3>
+          <p>${p.price} RWF</p>
+          <button onclick="addToCart('${p.name}', ${p.price})">
+            Add to Cart
+          </button>
+        </div>
+      `;
+
     });
 
   } catch(error) {
+
     alert("ERROR: " + error.message);
+
   }
 
 }
