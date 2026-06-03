@@ -152,23 +152,21 @@ async function displayProducts(){
 
   container.innerHTML = "";
 
-  const querySnapshot = await getDocs(collection(db, "products"));
-alert("Products found: " + querySnapshot.size);
-  querySnapshot.forEach((doc) => {
+  async function displayProducts(){
 
-    const p = doc.data();
+  try {
 
-    container.innerHTML += `
-      <div class="card">
-        <h3>${p.name}</h3>
-        <p>${p.price} RWF</p>
-        <button onclick="addToCart('${p.name}', ${p.price})">
-          Add to Cart
-        </button>
-      </div>
-    `;
+    const querySnapshot = await getDocs(collection(db, "products"));
 
-  });
+    alert("Products found: " + querySnapshot.size);
+
+    querySnapshot.forEach((doc) => {
+      alert(JSON.stringify(doc.data()));
+    });
+
+  } catch(error) {
+    alert("ERROR: " + error.message);
+  }
 
 }
 window.addToCart = function(name, price){
