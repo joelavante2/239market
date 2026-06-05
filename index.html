@@ -166,16 +166,14 @@ const querySnapshot = await getDocs(collection(db, "products"));
       alert(JSON.stringify(p));
 
       container.innerHTML += `
-        <div class="card">
-          <h3>${p.Name}</h3>
-<p>${p.Price} RWF</p>
-<button onclick="addToCart('${p.Name}', ${p.Price})">
-          
-          
-            Add to Cart
-          </button>
-        </div>
-      `;
+<div class="card">
+  <h3>${p.name}</h3>
+  <p>${p.price} RWF</p>
+  <button onclick="addToCart('${p.name}', ${p.price})">
+    Add to Cart
+  </button>
+</div>
+`;
 
     });
 
