@@ -153,7 +153,7 @@ const container = document.getElementById("products");
   try {
 
     alert("Reading collection: products");
-const querySnapshot = await getDocs(collection(db, "products"));
+const querySnapshot = await getDocs(collection(db, "test"));
 
     alert("Products found: " + querySnapshot.size);
 
