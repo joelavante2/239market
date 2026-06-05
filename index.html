@@ -152,7 +152,8 @@ const container = document.getElementById("products");
 
   try {
 
-    const querySnapshot = await getDocs(collection(db, "products"));
+    alert("Reading collection: products");
+const querySnapshot = await getDocs(collection(db, "products"));
 
     alert("Products found: " + querySnapshot.size);
 
