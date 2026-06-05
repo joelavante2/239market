@@ -148,33 +148,16 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
 const container = document.getElementById("products");
 
-async function displayProducts(){
-
-  container.innerHTML = "";
+ async function displayProducts() {
 
   try {
 
-    alert("PROJECT ID: " + firebaseConfig.projectId);
-const querySnapshot = await getDocs(collection(db, "products"));
+    const querySnapshot = await getDocs(collection(db, "products"));
 
     alert("Products found: " + querySnapshot.size);
 
     querySnapshot.forEach((doc) => {
-
-      const p = doc.data();
-
-      alert(JSON.stringify(p));
-
-      container.innerHTML += `
-<div class="card">
-  <h3>${p.name}</h3>
-  <p>${p.price} RWF</p>
-  <button onclick="addToCart('${p.name}', ${p.price})">
-    Add to Cart
-  </button>
-</div>
-`;
-
+      alert(JSON.stringify(doc.data()));
     });
 
   } catch(error) {
