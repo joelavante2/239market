@@ -167,9 +167,11 @@ const querySnapshot = await getDocs(collection(db, "storeproducts"));
 
       container.innerHTML += `
         <div class="card">
-          <h3>${p.name}</h3>
-          <p>${p.price} RWF</p>
-          <button onclick="addToCart('${p.name}', ${p.price})">
+          <h3>${p.Name}</h3>
+<p>${p.Price} RWF</p>
+<button onclick="addToCart('${p.Name}', ${p.Price})">
+          
+          
             Add to Cart
           </button>
         </div>
