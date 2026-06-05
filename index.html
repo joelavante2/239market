@@ -154,7 +154,7 @@ async function displayProducts(){
 
   try {
 
-    alert("Connected to Firebase");
+    alert("PROJECT ID: " + firebaseConfig.projectId);
 const querySnapshot = await getDocs(collection(db, "products"));
 
     alert("Products found: " + querySnapshot.size);
