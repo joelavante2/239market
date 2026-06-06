@@ -45,11 +45,7 @@ const container = document.getElementById("orders");
 
 async function loadOrders(){
 
-  const querySnapshot = await getDocs(collection(db, "orders"));
 
-  container.innerHTML = "";
-
-  querySnapshot.forEach(doc => {
 
     let data = doc.data();
 
