@@ -79,29 +79,6 @@ async function loadOrders(){
 
 loadOrders();
 
-    let data = doc.data();
-
-    container.innerHTML += `
-      <div style="border:1px solid #ccc; margin:10px; padding:10px;">
-        <h3>${data.customer.name}</h3>
-        <p>Phone: ${data.customer.phone}</p>
-        <p>Address: ${data.customer.address}</p>
-
-        <h4>Items:</h4>
-        <ul>
-          ${data.items.map(item => `
-            <li>${item.name} x${item.qty} = ${item.price * item.qty} RWF</li>
-          `).join("")}
-        </ul>
-      </div>
-    `;
-
-  });
-
-}
-
-loadOrders();
-
 </script>
 
 </body>
