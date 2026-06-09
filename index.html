@@ -148,16 +148,35 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
     const products = [
-  {name:"Phone", price:90000},
-  {name:"Shoes", price:20000},
-  {name:"Watch", price:30000},
-  {name:"Bag", price:40000}
+{
+  name:"Phone",
+  price:90000,
+  image:"images/phone.jpg"
+},
+{
+  name:"Shoes",
+  price:20000,
+  image:"images/shoes.jpg"
+},
+{
+  name:"Watch",
+  price:30000,
+  image:"images/watch.jpg"
+},
+{
+  name:"Bag",
+  price:40000,
+  image:"images/bag.jpg"
+}
 ];
 
 const container = document.getElementById("products");
 
 function displayProducts(){
+<img src="${p.image}"
+     style="width:100%;height:180px;object-fit:cover;border-radius:8px;">
 
+<h3>${p.name}</h3>
   container.innerHTML = "";
 
   products.forEach(p => {
