@@ -173,27 +173,27 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const container = document.getElementById("products");
 
 function displayProducts(){
-<img src="${p.image}"
-     style="width:100%;height:180px;object-fit:cover;border-radius:8px;">
 
-<h3>${p.name}</h3>
+  container.innerHTML = "";
 
   products.forEach(p => {
 
     container.innerHTML += `
-  <div class="card">
-    <img src="${p.image}"
-         style="width:100%;height:180px;object-fit:cover;border-radius:8px;">
+      <div class="card">
 
-    <h3>${p.name}</h3>
+        <img src="${p.image}"
+             style="width:100%;height:180px;object-fit:cover;border-radius:8px;">
 
-    <p>${p.price} RWF</p>
+        <h3>${p.name}</h3>
 
-    <button onclick="addToCart('${p.name}', ${p.price})">
-      Add to Cart
-    </button>
-  </div>
-`;
+        <p>${p.price} RWF</p>
+
+        <button onclick="addToCart('${p.name}', ${p.price})">
+          Add to Cart
+        </button>
+
+      </div>
+    `;
 
   });
 
