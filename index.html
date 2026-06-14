@@ -281,7 +281,23 @@ window.placeOrder = async function(){
   };
 
   try{
+let message = `🛒 New Order
 
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Items:
+`;
+
+cart.forEach(item => {
+  message += `${item.name} x${item.qty} = ${item.price * item.qty} RWF\n`;
+});
+
+let whatsappUrl =
+`https://wa.me/250784526877?text=${encodeURIComponent(message)}`;
+
+window.open(whatsappUrl, "_blank");
     await addDoc(collection(db, "orders"), order);
 
     alert("Order placed successfully!");
