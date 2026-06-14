@@ -1,82 +1,46 @@
-admin.html
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Dashboard</title>
+  <title>Admin Panel</title>
 </head>
-
 <body>
+
+<h2>Add Product</h2>
+
+<input type="text" id="name" placeholder="Product Name">
+<br><br>
+
+<input type="number" id="price" placeholder="Price">
+<br><br>
+
+<input type="text" id="image" placeholder="Image URL">
+<br><br>
+
+<button onclick="saveProduct()">Save Product</button>
+
 <script>
-const password = prompt("Enter Admin Password");
+function saveProduct(){
 
-if(password !== "239marketadmin"){
-  document.write("<h1>Access Denied</h1>");
-  throw new Error("Unauthorized");
-}
-</script>
-<h1>Orders Dashboard</h1>
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+  let image = document.getElementById("image").value;
 
-<div id="orders"></div>
+  let products =
+    JSON.parse(localStorage.getItem("products")) || [];
 
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDRXqV08VcaDScHMuhgZPM26he9FYIrq0s",
-  authDomain: "market-55334.firebaseapp.com",
-  projectId: "market-55334",
-  storageBucket: "market-55334.firebasestorage.app",
-  messagingSenderId: "363644741456",
-  appId: "1:363644741456:web:d99a9ef726966979016e55"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const container = document.getElementById("orders");
-async function loadOrders(){
-
-  alert("Loading orders...");
-
-  const querySnapshot = await getDocs(collection(db, "orders"));
-
-  alert("Orders found: " + querySnapshot.size);
-
-  container.innerHTML = "";
-
-  querySnapshot.forEach(doc => {
-
-    let data = doc.data();
-
-    container.innerHTML += `
-      <div style="border:1px solid #ccc; margin:10px; padding:10px;">
-        <h3>${data.customer.name}</h3>
-        <p>Phone: ${data.customer.phone}</p>
-        <p>Address: ${data.customer.address}</p>
-
-        <h4>Items:</h4>
-
-        <ul>
-          ${data.items.map(item => `
-            <li>${item.name} x${item.qty} = ${item.price * item.qty} RWF</li>
-          `).join("")}
-        </ul>
-      </div>
-    `;
+  products.push({
+    name:name,
+    price:price,
+    image:image
   });
 
+  localStorage.setItem(
+    "products",
+    JSON.stringify(products)
+  );
+
+  alert("Product Saved!");
 }
-
-loadOrders();
-
 </script>
 
 </body>
