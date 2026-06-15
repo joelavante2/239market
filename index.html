@@ -158,24 +158,18 @@ const container = document.getElementById("products");
 
 function displayProducts(){
 
+  console.log("Products:", products);
+
   container.innerHTML = "";
-console.log(products);
+
   products.forEach(p => {
 
     container.innerHTML += `
       <div class="card">
-
         <img src="${p.image}"
-             style="width:100%;height:180px;object-fit:cover;border-radius:8px;">
-
+        style="width:100%;height:180px;">
         <h3>${p.name}</h3>
-
         <p>${p.price} RWF</p>
-
-        <button onclick="addToCart('${p.name}', ${p.price})">
-          Add to Cart
-        </button>
-
       </div>
     `;
 
