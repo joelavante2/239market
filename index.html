@@ -146,9 +146,13 @@ const db = getFirestore(app);
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-
-    let products =
-JSON.parse(localStorage.getItem("products")) || [];
+let products = [
+{
+  name:"Test Product",
+  price:1000,
+  image:"https://via.placeholder.com/300x200.png?text=Phone"
+}
+];
 
 const container = document.getElementById("products");
 
